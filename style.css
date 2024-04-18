@@ -64,14 +64,6 @@ textarea {
   margin-top: 8px;
 }
 
-:is(input, textarea):user-valid {
-  border-color: green;
-}
-
-:is(input, textarea):user-invalid {
-  border-color: red;
-}
-
 fieldset {
   appearance: none;
   border: 1px solid #ccc;

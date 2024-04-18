@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>採用応募フォームのデモ - 完成版</title>
   <link rel="stylesheet" href="../style.css">
+  <style>
+    :is(input, textarea):user-valid {
+      border-color: green;
+    }
+
+    :is(input, textarea):user-invalid {
+      border-color: red;
+    }
+  </style>
 </head>
 <body>
 <h2>採用応募フォーム</h2>
