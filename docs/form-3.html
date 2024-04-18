@@ -2,7 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>入力後にバリデーション結果が表示されるデモ</title>
+  <link rel="stylesheet" href="../style.css">
   <style>
     input span::after {
       display: inline-block;
@@ -11,24 +13,26 @@
     }
 
     input:user-valid ~ span::after {
-      content: "✓";
+      content: "✓入力済み";
       color: green;
     }
 
     input:user-invalid ~ span::after {
-      content: "※";
+      content: "※バリデーションエラー";
       color: red;
     }
   </style>
 </head>
 <body>
-<h1>入力後にバリデーション結果が表示されるデモ</h1>
-<label>
-  名前（必須）：
-  <input type="text" required minlength="3"/>
-  <span></span>
-</label>
-<p>3文字以上で入力してください</p>
+<div class="container">
+  <h1>入力後にバリデーション結果が表示されるデモ</h1>
+  <p>3文字以上で入力してください</p>
+  <label>
+    名前（必須）：
+    <input type="text" required minlength="3"/>
+    <span></span>
+  </label>
+</div>
 </body>
 
 <script defer>

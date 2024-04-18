@@ -2,13 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>送信ボタンの非活性化（CSS）</title>
+  <link rel="stylesheet" href="../style.css">
   <style>
-    label ~ span {
+    label ~ .message {
       visibility: hidden;
+      margin-bottom: 16px;
     }
 
-    label:has(input:user-invalid) ~ span {
+    label:has(input:user-invalid) ~ .message {
       visibility: visible;
       color: red;
     }
@@ -20,16 +23,18 @@
   </style>
 </head>
 <body>
-<h1>送信ボタンの非活性化デモ（CSS）</h1>
-<form>
-  <p>
+<div class="container">
+  <h1>送信ボタンの非活性化デモ（CSS）</h1>
+  <form>
     <label>
       名前：
       <input type="text" required/>
     </label>
-    <span>名前を入力してください</span>
-  </p>
-  <button type="submit">送信</button>
-</form>
+    <p class="message">名前を入力してください</p>
+    <div>
+      <button type="submit">送信</button>
+    </div>
+  </form>
+</div>
 </body>
 </html>

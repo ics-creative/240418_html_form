@@ -2,79 +2,76 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>フォームの構成要素に応じたバリデーション</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<h2>文字数制限</h2>
-<form>
-  <p>
-    <label>
-      2文字以内で入力してください：<input type="text" minlength="2">
-    </label>
-  </p>
-  <p>
-    <label>
-      10文字以内で入力してください：<input type="text" maxlength="10">
-    </label>
-  </p>
-  <button>送信</button>
-</form>
-<h2>特殊な入力型</h2>
-<form>
-  <p>
-    <label>
-      メールアドレス：<input type="email">
-    </label>
-  </p>
-  <p>
-    <label>
-      URL：<input type="url">
-    </label>
-  </p>
-  <button>送信</button>
-</form>
-<h2>パターン属性</h2>
-<code>pattern="\d{3}-\d{4}"</code>
-<form>
-  <p>
-    <label>
-      郵便番号：<input pattern="\d{3}-\d{4}"/>
-    </label>
-  </p>
-  <button>送信</button>
-</form>
-<h2>数値</h2>
-<form>
-  <p>
-    <label>
-      TOEICの点数：<input value="10" type="number" min="10" max="990" step="5"/>
-    </label>
-  </p>
-  <button>送信</button>
-</form>
-<h2>日付</h2>
-<form>
-  <p>
-    <label>
-      日：<input type="date" min="2024-01-01" max="2024-12-31">
-    </label>
-  </p>
-  <p>
-    <label>
-      月：<input type="month">
-    </label>
-  </p>
-  <p>
-    <label>
-      週：<input type="week">
-    </label>
-  </p>
-  <p>
-    <label>
-      時：<input type="datetime-local">
-    </label>
-  </p>
-  <button>送信</button>
-</form>
+<div class="container text-center">
+  <section>
+    <h2>文字数制限</h2>
+    <form>
+        <label>
+          2文字以内で入力してください（minlength="2"）：<input type="text" minlength="2" required>
+        </label>
+        <label>
+          10文字以内で入力してください（maxlength="10"）：<input type="text" maxlength="10" required>
+        </label>
+      <div>
+        <button type="submit" class="btn btn-primary">送信</button>
+      </div>
+    </form>
+  </section>
+  <section>
+    <h2>特殊な入力型</h2>
+    <form>
+        <label>
+          メールアドレス（type="email"）：<input type="email">
+        </label>
+        <label>
+          URL（type="url"）：<input type="url">
+        </label>
+      <button>送信</button>
+    </form>
+  </section>
+  <section>
+    <h2>パターン属性</h2>
+    <form>
+        <label>
+          郵便番号（<code>pattern="\d{3}-\d{4}"</code>）：
+          <input type="text" pattern="\d{3}-\d{4}"/>
+        </label>
+      <button>送信</button>
+    </form>
+  </section>
+  <section>
+    <h2>数値</h2>
+    <form>
+        <label>
+          TOEICの点数（type="number"）：<input value="10" type="number" min="10" max="990" step="5"/>
+        </label>
+      <button>送信</button>
+    </form>
+  </section>
+  <section>
+    <h2>日付</h2>
+    <form>
+        <label>
+          日（type="date"）：<input type="date" min="2024-01-01" max="2024-12-31">
+        </label>
+        <label>
+          月（type="month"）：<input type="month">
+        </label>
+        <label>
+          週（type="week"）：<input type="week">
+        </label>
+        <label>
+          時（type="datetime-local"）：<input type="datetime-local">
+        </label>
+      <button>送信</button>
+    </form>
+  </section>
+  </div>
+</div>
 </body>
 </html>

@@ -2,12 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>バリデーションエラーメッセージの表示デモ</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .message {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-<h1>バリデーションエラーメッセージの表示デモ</h1>
-<input required minlength="5" maxlength="10"/>
-<p class="message"></p>
+<div class="container">
+  <h1>バリデーションエラーメッセージの表示デモ</h1>
+  <ul>
+    <li>必須項目です</li>
+    <li>5文字以上、10文字以下で入力してください</li>
+  </ul>
+  <label>
+    <input type="text" required minlength="5" maxlength="10"/>
+  </label>
+  <p class="message"></p>
+</div>
 <script>
   const input = document.querySelector("input");
   const message = document.querySelector(".message");

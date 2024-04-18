@@ -2,12 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>独自のエラーメッセージを表示するデモ</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .message {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-<h1>独自のエラーメッセージを表示するデモ</h1>
-<input required minlength="5" maxlength="10" pattern="^[0-9A-Za-z]+$"/>
-<p class="message"></p>
+<div class="container">
+  <h1>独自のエラーメッセージを表示するデモ</h1>
+  <ul>
+    <li>必須項目です</li>
+    <li>5文字以上、10文字以下で入力してください</li>
+    <li><strong>半角英数字で入力してください</strong></li>
+  </ul>
+  <input type="text" required minlength="5" maxlength="10" pattern="^[0-9A-Za-z]+$"/>
+  <p class="message"></p>
+</div>
 <script>
   const input = document.querySelector("input");
   const message = document.querySelector(".message");

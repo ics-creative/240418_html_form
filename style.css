@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 24px;
+}
+
+section:not(:last-child) {
+  margin-bottom: 48px;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 960px;
+  width: 100%;
+}
+
+.form-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+form {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 24px;
+  width: 100%;
+}
+
+label, legend {
+  display: block;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.message {
+  color: red;
+}
+
+
+input:is([type="text"], [type="email"], [type="url"],
+[type="tel"],
+[type="password"],
+[type="search"],
+[type="number"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="month"],
+[type="week"],
+[type="number"]
+),
+textarea {
+  display: block;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+:is(input, textarea):user-valid {
+  border-color: green;
+}
+
+:is(input, textarea):user-invalid {
+  border-color: red;
+}
+
+fieldset {
+  appearance: none;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.flex {
+  display: flex;
+  gap: 8px;
+}
+
+input:is(
+  [type="date"],
+  [type="datetime"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="week"],
+  [type="number"]) {
+  max-width: 200px;
+}
+
+form button {
+  appearance: none;
+  min-width: 200px;
+  background-color: mediumblue;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: normal;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+button[type="submit"]:hover {
+  background-color: darkblue;
+}
