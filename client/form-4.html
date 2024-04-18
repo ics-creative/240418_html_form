@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>バリデーションエラーメッセージの表示デモ</title>
+</head>
+<body>
+<h1>バリデーションエラーメッセージの表示デモ</h1>
+<input required minlength="5" maxlength="10" />
+<p class="message"></p>
+<script>
+    const input = document.querySelector("input");
+    const message = document.querySelector(".message");
+
+    // フォームからフォーカスを外したら発火
+    input.addEventListener("blur", (e) => {
+        // バリデーションを通過しているか？
+        const isValud = input.checkValidity();
+        if(isValud){
+            // エラーメッセージを空にする
+            message.innerHTML = ""
+        } else {
+            // エラーメッセージを取得
+            const errorMessage = input.validationMessage;
+            message.innerHTML = errorMessage;
+        }
+    })
+</script>
+</body>
+</html>

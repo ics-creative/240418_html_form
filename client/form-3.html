@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>user-invalidのデモ</title>
+    <style>
+        input span::after {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+        }
+        input:user-valid ~ span::after {
+            content: "✓";
+            color: green;
+        }
+        input:user-invalid ~ span::after {
+            content: "※";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>入力後にバリデーション結果が表示されるデモ</h1>
+<label>
+    名前（必須）：
+    <input type="text" required minlength="3" />
+    <span></span>
+</label>
+<p>3文字以上で入力してください</p>
+</body>
+
+<script defer>
+    const input = document.querySelector("input")
+    const errorEl = document.querySelector(".error")
+    input.addEventListener("blur", (e) => {
+        if(input.checkValidity()){
+            errorEl.innerHTML = ""
+            return
+        }
+        // パターンミスマッチの場合はバリデーションメッセージを書き換え
+        if(input.validity.patternMismatch) {
+            input.setCustomValidity("半角英数字で入力してください。")
+        }
+        // エラーメッセージを取得
+        const errorMessage = input.validationMessage;
+        errorEl.innerHTML = errorMessage;
+    })
+</script>
+</html>
