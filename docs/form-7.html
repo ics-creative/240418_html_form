@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>送信ボタンの非活性化（JavaScript）</title>
+  <meta charset="UTF-8">
+  <title>送信ボタンの非活性化（JavaScript）</title>
 </head>
 <body>
 <form>
-    <label>
-        名前：
-        <input type="text" required />
-    </label>
-    <p>
+  <label>
+    名前：
+    <input type="text" required/>
+  </label>
+  <p>
     <button type="submit" disabled>送信</button>
-    </p>
+  </p>
 </form>
 <script>
-    const inputs = document.getElementsByTagName("input");
-    const button = document.querySelector("button[type='submit']");
-    // すべての要素がバリデーションを通過しているかチェックする関数
-    const checkValidate = () => {
-        let valid = [];
-        for (const input of inputs) {
-            valid.push(input.checkValidity());
-        }
-        return valid.every((v) => !!v);
-    };
-
-    let isValid = false;
-    // すべてのinput要素の入力中にバリデーションをチェックする
+  const inputs = document.getElementsByTagName("input");
+  const button = document.querySelector("button[type='submit']");
+  // すべての要素がバリデーションを通過しているかチェックする関数
+  const checkValidate = () => {
+    let valid = [];
     for (const input of inputs) {
-        input.addEventListener("input", () => {
-            isValid = checkValidate();
-            button.disabled = !isValid
-        });
+      valid.push(input.checkValidity());
     }
+    return valid.every((v) => !!v);
+  };
+
+  let isValid = false;
+  // すべてのinput要素の入力中にバリデーションをチェックする
+  for (const input of inputs) {
+    input.addEventListener("input", () => {
+      isValid = checkValidate();
+      button.disabled = !isValid
+    });
+  }
 </script>
 </body>
 </html>

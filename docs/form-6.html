@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>送信ボタンの非活性化（CSS）</title>
-    <style>
-        label ~ span {
-            visibility: hidden;
-        }
-        label:has(input:user-invalid) ~ span {
-            visibility: visible;
-            color: red;
-        }
-        form:has(input:invalid) button[type="submit"]{
-            opacity: 0.5;
-            pointer-events: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>送信ボタンの非活性化（CSS）</title>
+  <style>
+    label ~ span {
+      visibility: hidden;
+    }
+
+    label:has(input:user-invalid) ~ span {
+      visibility: visible;
+      color: red;
+    }
+
+    form:has(input:invalid) button[type="submit"] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
 <h1>送信ボタンの非活性化デモ（CSS）</h1>
 <form>
-    <p>
+  <p>
     <label>
-        名前：
-        <input type="text" required />
+      名前：
+      <input type="text" required/>
     </label>
     <span>名前を入力してください</span>
-    </p>
-    <button type="submit">送信</button>
+  </p>
+  <button type="submit">送信</button>
 </form>
 </body>
 </html>
