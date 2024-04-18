@@ -33,7 +33,7 @@
   const message = document.querySelector(".message")
   // すべての要素がバリデーションを通過しているかチェックする関数
   const checkValidate = () => {
-    let valid = [];
+    const valid = [];
     for (const input of inputs) {
       valid.push(input.checkValidity());
     }
