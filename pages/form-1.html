@@ -10,7 +10,7 @@
 <div class="container text-center">
   <section>
     <h2>文字数制限</h2>
-    <form>
+    <form onsubmit="return false;">
         <label>
           2文字以上入力してください（minlength="2"）：<input type="text" minlength="2" required>
         </label>
@@ -24,7 +24,7 @@
   </section>
   <section>
     <h2>特殊な入力型</h2>
-    <form>
+    <form onsubmit="return false;">
         <label>
           メールアドレス（type="email"）：<input type="email">
         </label>
@@ -36,7 +36,7 @@
   </section>
   <section>
     <h2>パターン属性</h2>
-    <form>
+    <form onsubmit="return false;">
         <label>
           郵便番号（<code>pattern="\d{3}-\d{4}"</code>）：
           <input type="text" pattern="\d{3}-\d{4}"/>
@@ -46,7 +46,7 @@
   </section>
   <section>
     <h2>数値</h2>
-    <form>
+    <form onsubmit="return false;">
         <label>
           TOEICの点数（type="number"）：<input value="10" type="number" min="10" max="990" step="5"/>
         </label>
@@ -55,7 +55,7 @@
   </section>
   <section>
     <h2>日付</h2>
-    <form>
+    <form onsubmit="return false;">
         <label>
           日（type="date"）：<input type="date" min="2024-01-01" max="2024-12-31">
         </label>
