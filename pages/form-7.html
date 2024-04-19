@@ -45,8 +45,8 @@
   for (const input of inputs) {
     input.addEventListener("blur", () => {
       isValid = checkValidate();
-      message.innerHTML = ""
-      message.innerHTML += input.validationMessage
+      message.textContent = ""
+      message.textContent += input.validationMessage
       button.disabled = !isValid
     });
   }

@@ -16,11 +16,11 @@
   </label>
   <label>
     メールアドレス<abbr title="必須項目">*</abbr>：
-    <input name="email" type="email" required placeholder="example@gmai.com">
+    <input name="email" type="email" required placeholder="example@example.com">
   </label>
   <label>
-    電話番号<abbr title="必須項目">*</abbr>：
-    <input name="tel" type="tel" pattern="\d{2,4}-\d{2,4}-\d{4}" required placeholder="090-0000-0000">
+    電話番号（ハイフンなし）<abbr title="必須項目">*</abbr>：
+    <input name="tel" type="tel" pattern="^0\d{9,10}$" required placeholder="09011112222">
   </label>
   <fieldset>
     <legend>性別<abbr title="必須項目">*</abbr>：</legend>

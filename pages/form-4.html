@@ -33,11 +33,11 @@
     const isValud = input.checkValidity();
     if (isValud) {
       // エラーメッセージを空にする
-      message.innerHTML = ""
+      message.textContent = ""
     } else {
       // エラーメッセージを取得
       const errorMessage = input.validationMessage;
-      message.innerHTML = errorMessage;
+      message.textContent = errorMessage;
     }
   })
 </script>

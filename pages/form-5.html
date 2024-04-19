@@ -32,7 +32,7 @@
     const isValud = input.checkValidity();
     if (isValud) {
       // エラーメッセージを空にする
-      message.innerHTML = ""
+      message.textContent = ""
     } else {
       // パターンミスマッチの場合はバリデーションメッセージを書き換え
       if (input.validity.patternMismatch) {
@@ -40,7 +40,7 @@
       }
       // エラーメッセージを取得
       const errorMessage = input.validationMessage;
-      message.innerHTML = errorMessage;
+      message.textContent = errorMessage;
     }
   })
 </script>
