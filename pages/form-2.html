@@ -1,58 +1,84 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>採用応募フォームのデモ</title>
-  <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-<h2>採用応募フォーム</h2>
-<form>
-  <p>必須のフィールドには<abbr title="必須項目">*</abbr>が付いています。</p>
-  <label>
-    氏名<abbr title="必須項目">*</abbr>：
-    <input name="name" type="text" required maxlength="30">
-  </label>
-  <label>
-    メールアドレス<abbr title="必須項目">*</abbr>：
-    <input name="email" type="email" required placeholder="example@example.com">
-  </label>
-  <label>
-    電話番号（ハイフンなし）<abbr title="必須項目">*</abbr>：
-    <input name="tel" type="tel" pattern="^0\d{9,10}$" required placeholder="09011112222">
-  </label>
-  <fieldset>
-    <legend>性別<abbr title="必須項目">*</abbr>：</legend>
-    <div class="flex">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>採用応募フォームのデモ</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <h2>採用応募フォーム</h2>
+    <form>
+      <p>必須のフィールドには<abbr title="必須項目">*</abbr>が付いています。</p>
       <label>
-        <input type="radio" name="gender" value="male" required>男性
+        氏名<abbr title="必須項目">*</abbr>：
+        <input name="name" type="text" required maxlength="30" />
       </label>
       <label>
-        <input type="radio" name="gender" value="female" required>女性
+        メールアドレス<abbr title="必須項目">*</abbr>：
+        <input
+          name="email"
+          type="email"
+          required
+          placeholder="example@example.com"
+        />
       </label>
       <label>
-        <input type="radio" name="gender" value="noanswer" required>回答なし
+        電話番号（ハイフンなし）<abbr title="必須項目">*</abbr>：
+        <input
+          name="tel"
+          type="tel"
+          pattern="^0\d{9,10}$"
+          required
+          placeholder="09011112222"
+        />
       </label>
-    </div>
-  </fieldset>
-  <label>
-    生年月日<abbr title="必須項目">*</abbr>：
-    <input name="birthday" type="date" required>
-  </label>
-  <label>
-    志望動機（200文字以内）<abbr title="必須項目">*</abbr><br>
-    <textarea name="reason" required maxlength="200" cols="50" rows="4"></textarea>
-  </label>
-  <label>
-    ポートフォリオ：
-    <input name="portfolio" type="url" placeholder="https://example.com">
-  </label>
-  <label>
-    その他<br>
-    <textarea name="other"></textarea>
-  </label>
-  <button type="submit">送信</button>
-</form>
-</body>
+      <fieldset>
+        <legend>性別<abbr title="必須項目">*</abbr>：</legend>
+        <div class="flex">
+          <label>
+            <input type="radio" name="gender" value="male" required />男性
+          </label>
+          <label>
+            <input type="radio" name="gender" value="female" required />女性
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="noanswer"
+              required
+            />回答なし
+          </label>
+        </div>
+      </fieldset>
+      <label>
+        生年月日<abbr title="必須項目">*</abbr>：
+        <input name="birthday" type="date" required />
+      </label>
+      <label>
+        志望動機（200文字以内）<abbr title="必須項目">*</abbr><br />
+        <textarea
+          name="reason"
+          required
+          maxlength="200"
+          cols="50"
+          rows="4"
+        ></textarea>
+      </label>
+      <label>
+        ポートフォリオ：
+        <input
+          name="portfolio"
+          type="url"
+          placeholder="https://example.com"
+        />
+      </label>
+      <label>
+        その他<br />
+        <textarea name="other"></textarea>
+      </label>
+      <button type="submit">送信</button>
+    </form>
+  </body>
 </html>

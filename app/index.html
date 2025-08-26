@@ -1,92 +1,97 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>採用応募フォームのデモ - 完成版</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-<h2>採用応募フォーム</h2>
-<form action="http://localhost:3000/submit">
-  <p>必須のフィールドには<abbr title="必須項目">*</abbr>が付いています。</p>
-  <label>
-    氏名<abbr title="必須項目">*</abbr>：<span class="message"></span>
-    <input name="name" type="text" required maxlength="30">
-  </label>
-  <label>
-    メールアドレス<abbr title="必須項目">*</abbr>：<span class="message"></span>
-    <input name="email" type="email" required placeholder="example@example.com">
-  </label>
-  <label>
-    電話番号<abbr title="必須項目">*</abbr>：<span class="message"></span>
-    <input name="tel" type="tel" pattern="^0\d{9,10}$" required placeholder="09011112222"
-           data-error="ハイフンなしの半角数字のみで入力してください">
-  </label>
-  <fieldset>
-    <legend>性別<abbr title="必須項目">*</abbr>：</legend>
-    <span class="message"></span>
-    <div class="flex">
-      <label>
-        <input type="radio" name="gender" value="male" required>男性
-      </label>
-      <label>
-        <input type="radio" name="gender" value="female" required>女性
-      </label>
-      <label>
-        <input type="radio" name="gender" value="noanswer" required>回答なし
-      </label>
-    </div>
-  </fieldset>
-  <label>
-    生年月日<abbr title="必須項目">*</abbr>：<span class="message"></span>
-    <input name="birthday" type="date" required>
-  </label>
-  <label>
-    志望動機（200文字以内）<abbr title="必須項目">*</abbr>：<span class="message"></span>
-    <textarea name="reason" required maxlength="200" cols="50" rows="4"></textarea>
-  </label>
-  <label>
-    ポートフォリオ：<span class="message"></span>
-    <input name="portfolio" type="url" placeholder="https://example.com">
-  </label>
-  <label>
-    <label>その他：<span class="message"></span>
-      <textarea name="other"></textarea>
+  <h2>採用応募フォーム</h2>
+  <form action="http://localhost:3000/submit">
+    <p>必須のフィールドには<abbr title="必須項目">*</abbr>が付いています。</p>
+    <label>
+      氏名<abbr title="必須項目">*</abbr>：<span class="message"></span>
+      <input name="name" type="text" required maxlength="30" />
     </label>
-  </label>
-  <div>
-    <button type="submit" disabled>送信</button>
-  </div>
-</form>
-<script>
-  const inputs = [
-    ...document.getElementsByTagName("input"),
-    ...document.getElementsByTagName("textarea")
-  ];
-  const button = document.querySelector("button[type='submit']");
-  // すべての要素がバリデーションを通過しているかチェックする関数
-  const checkValidate = () => {
-    let valid = [];
-    for (const input of inputs) {
-      valid.push(input.checkValidity());
-    }
-    return valid.every((v) => !!v);
-  };
+    <label>
+      メールアドレス<abbr title="必須項目">*</abbr>：<span class="message"></span>
+      <input name="email" type="email" required placeholder="example@example.com" />
+    </label>
+    <label>
+      電話番号<abbr title="必須項目">*</abbr>：<span class="message"></span>
+      <input name="tel" type="tel" pattern="^0\d{9,10}$" required placeholder="09011112222"
+             data-error="ハイフンなしの半角数字のみで入力してください" />
+    </label>
+    <fieldset>
+      <legend>性別<abbr title="必須項目">*</abbr>：</legend>
+      <span class="message"></span>
+      <div class="flex">
+        <label>
+          <input type="radio" name="gender" value="male" required />男性
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female" required />女性
+        </label>
+        <label>
+          <input type="radio" name="gender" value="noanswer" required />回答なし
+        </label>
+      </div>
+    </fieldset>
+    <label>
+      生年月日<abbr title="必須項目">*</abbr>：<span class="message"></span>
+      <input name="birthday" type="date" required />
+    </label>
+    <label>
+      志望動機（200文字以内）<abbr title="必須項目">*</abbr>：<span class="message"></span>
+      <textarea name="reason" required maxlength="200" cols="50" rows="4"></textarea>
+    </label>
+    <label>
+      ポートフォリオ：<span class="message"></span>
+      <input name="portfolio" type="url" placeholder="https://example.com" />
+    </label>
+    <label>
+      <label>その他：<span class="message"></span>
+        <textarea name="other"></textarea>
+      </label>
+    </label>
+    <div>
+      <button type="submit" disabled>送信</button>
+    </div>
+  </form>
+  <script>
+    const inputs = [
+      ...document.getElementsByTagName("input"),
+      ...document.getElementsByTagName("textarea")
+    ];
+    const button = document.querySelector("button[type='submit']");
+    
+    // すべての要素がバリデーションを通過しているかチェックする関数
+    const checkValidate = () => {
+      const validationResults = [];
+      for (const input of inputs) {
+        validationResults.push(input.checkValidity());
+      }
+      return validationResults.every((isValid) => isValid === true);
+    };
 
-  let isValid = false;
-  // すべてのinput要素にバリデーションチェックを追加する
-  for (const input of inputs) {
-    input.addEventListener("blur", () => {
-      isValid = checkValidate();
-      const message = input.closest("label").querySelector(".message")
-      message.textContent = ""
-      // パターンミスマッチの場合は独自のメッセージを表示
-      message.textContent =
-        input.validity.patternMismatch ? input.dataset.error : input.validationMessage
-      button.disabled = !isValid
-    });
-  }
-</script>
+    let isValid = false;
+    
+    // すべてのinput要素にバリデーションチェックを追加する
+    for (const input of inputs) {
+      input.addEventListener("blur", () => {
+        isValid = checkValidate();
+        const message = input.closest("label").querySelector(".message");
+        message.textContent = "";
+        
+        // パターンミスマッチの場合は独自のメッセージを表示
+        message.textContent = input.validity.patternMismatch 
+          ? input.dataset.error 
+          : input.validationMessage;
+        
+        button.disabled = !isValid;
+      });
+    }
+  </script>
 </body>
 </html>

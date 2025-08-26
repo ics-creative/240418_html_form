@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>バリデーションエラーメッセージの表示デモ</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css" />
   <style>
     .message {
       color: red;
@@ -12,34 +12,36 @@
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>バリデーションエラーメッセージの表示デモ</h1>
-  <ul>
-    <li>必須項目です</li>
-    <li>5文字以上、10文字以下で入力してください</li>
-  </ul>
-  <label>
-    <input type="text" required minlength="5" maxlength="10"/>
-  </label>
-  <p class="message"></p>
-</div>
-<script>
-  const input = document.querySelector("input");
-  const message = document.querySelector(".message");
+  <div class="container">
+    <h1>バリデーションエラーメッセージの表示デモ</h1>
+    <ul>
+      <li>必須項目です</li>
+      <li>5文字以上、10文字以下で入力してください</li>
+    </ul>
+    <label>
+      <input type="text" required minlength="5" maxlength="10" />
+    </label>
+    <p class="message"></p>
+  </div>
+  
+  <script>
+    const input = document.querySelector("input");
+    const message = document.querySelector(".message");
 
-  // フォームからフォーカスを外したら発火
-  input.addEventListener("blur", (e) => {
-    // バリデーションを通過しているか？
-    const isValud = input.checkValidity();
-    if (isValud) {
-      // エラーメッセージを空にする
-      message.textContent = ""
-    } else {
-      // エラーメッセージを取得
-      const errorMessage = input.validationMessage;
-      message.textContent = errorMessage;
-    }
-  })
-</script>
+    // フォームからフォーカスを外したら発火
+    input.addEventListener("blur", (event) => {
+      // バリデーションを通過しているか？
+      const isValid = input.checkValidity();
+      
+      if (isValid) {
+        // エラーメッセージを空にする
+        message.textContent = "";
+      } else {
+        // エラーメッセージを取得
+        const errorMessage = input.validationMessage;
+        message.textContent = errorMessage;
+      }
+    });
+  </script>
 </body>
 </html>

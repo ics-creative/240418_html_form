@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>送信ボタンの非活性化（JavaScript）</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css" />
   <style>
     .message {
       height: 24px;
@@ -14,42 +14,45 @@
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>送信ボタンの非活性化デモ（JavaScript）</h1>
-  <form>
-    <label>
-      名前：
-      <input type="text" required minlength="2"/>
-    </label>
-    <p class="message"></p>
-    <div>
-      <button type="submit" disabled>送信</button>
-    </div>
-  </form>
-</div>
-<script>
-  const inputs = document.getElementsByTagName("input");
-  const button = document.querySelector("button[type='submit']");
-  const message = document.querySelector(".message")
-  // すべての要素がバリデーションを通過しているかチェックする関数
-  const checkValidate = () => {
-    const valid = [];
-    for (const input of inputs) {
-      valid.push(input.checkValidity());
-    }
-    return valid.every((v) => !!v);
-  };
+  <div class="container">
+    <h1>送信ボタンの非活性化デモ（JavaScript）</h1>
+    <form>
+      <label>
+        名前：
+        <input type="text" required minlength="2" />
+      </label>
+      <p class="message"></p>
+      <div>
+        <button type="submit" disabled>送信</button>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    const inputs = document.getElementsByTagName("input");
+    const button = document.querySelector("button[type='submit']");
+    const message = document.querySelector(".message");
+    
+    // すべての要素がバリデーションを通過しているかチェックする関数
+    const checkValidate = () => {
+      const validationResults = [];
+      for (const input of inputs) {
+        validationResults.push(input.checkValidity());
+      }
+      return validationResults.every((isValid) => isValid === true);
+    };
 
-  let isValid = false;
-  // すべてのinput要素にバリデーションチェックを追加する
-  for (const input of inputs) {
-    input.addEventListener("blur", () => {
-      isValid = checkValidate();
-      message.textContent = ""
-      message.textContent += input.validationMessage
-      button.disabled = !isValid
-    });
-  }
-</script>
+    let isValid = false;
+    
+    // すべてのinput要素にバリデーションチェックを追加する
+    for (const input of inputs) {
+      input.addEventListener("blur", () => {
+        isValid = checkValidate();
+        message.textContent = "";
+        message.textContent += input.validationMessage;
+        button.disabled = !isValid;
+      });
+    }
+  </script>
 </body>
 </html>
