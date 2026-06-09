@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ariaErrorMessageElements デモ</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .field {
+        display: grid;
+        gap: 8px;
+        max-width: 480px;
+      }
+
+      input:user-invalid {
+        outline: 2px solid #d93025;
+        outline-offset: 1px;
+      }
+
+      .error-msg {
+        visibility: hidden;
+        color: #d93025;
+        font-size: 14px;
+      }
+
+      input:user-invalid ~ .error-msg {
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ariaErrorMessageElements デモ</h1>
+      <p>メールアドレス欄にフォーカスを当て、不正な値を入力してフォーカスを外すとエラーメッセージが表示されます。</p>
+      <div class="field">
+        <label for="email">メールアドレス（必須）</label>
+        <input type="email" id="email" required />
+        <span class="error-msg">有効なメールアドレスを入力してください</span>
+      </div>
+    </div>
+
+    <script>
+      const input = document.getElementById("email");
+      const errorEl = input.nextElementSibling;
+
+      input.addEventListener("blur", () => {
+        input.checkValidity();
+        if (input.matches(":user-invalid")) {
+          input.setAttribute("aria-invalid", "true");
+          if ("ariaErrorMessageElements" in input) {
+            input.ariaErrorMessageElements = [errorEl];
+          }
+        } else {
+          input.removeAttribute("aria-invalid");
+          if ("ariaErrorMessageElements" in input) {
+            input.ariaErrorMessageElements = [];
+          }
+        }
+      });
+
+      input.addEventListener("input", () => {
+        if (input.getAttribute("aria-invalid") === "true") {
+          input.checkValidity();
+          if (input.matches(":user-invalid")) {
+            if ("ariaErrorMessageElements" in input) {
+              input.ariaErrorMessageElements = [errorEl];
+            }
+          } else {
+            input.removeAttribute("aria-invalid");
+            if ("ariaErrorMessageElements" in input) {
+              input.ariaErrorMessageElements = [];
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
