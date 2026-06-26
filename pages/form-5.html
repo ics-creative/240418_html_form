@@ -29,6 +29,7 @@
 
     // フォームからフォーカスを外したら発火
     input.addEventListener("blur", (event) => {
+      input.setCustomValidity("");
       // バリデーションを通過しているか？
       const isValid = input.checkValidity();
       
