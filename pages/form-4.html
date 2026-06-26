@@ -19,9 +19,9 @@
       <li>5文字以上、10文字以下で入力してください</li>
     </ul>
     <label>
-      <input type="text" required minlength="5" maxlength="10" />
+      <input type="text" required minlength="5" maxlength="10" aria-describedby="message" />
     </label>
-    <p class="message"></p>
+    <p id="message" class="message" role="alert"></p>
   </div>
   
   <script>
@@ -36,10 +36,12 @@
       if (isValid) {
         // エラーメッセージを空にする
         message.textContent = "";
+        input.setAttribute("aria-invalid", "false");
       } else {
         // エラーメッセージを取得
         const errorMessage = input.validationMessage;
         message.textContent = errorMessage;
+        input.setAttribute("aria-invalid", "true");
       }
     });
   </script>
